@@ -10,7 +10,7 @@ export function MetricsProvider({ children }) {
 
     const fetchMetrics = async () => {
         try {
-            const response = await axios.get('http://localhost:3000/metrics');
+            const response = await axios.get(process.env.VITE_API_URL+'/metrics');
             setMetrics(response.data);
             setError(null);
         } catch (err) {

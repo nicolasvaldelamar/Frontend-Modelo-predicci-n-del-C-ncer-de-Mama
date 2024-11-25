@@ -15,7 +15,7 @@ export function PredictionProvider({ children }) {
 
   const fetchModelMetrics = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/metrics');
+      const response = await axios.get(process.env.VITE_API_URL+'/api/metrics');
       setModelMetrics(response.data);
     } catch (error) {
       console.error('Error fetching metrics:', error);
@@ -24,7 +24,7 @@ export function PredictionProvider({ children }) {
 
   const makePrediction = async (features) => {
     try {
-        const response = await axios.post('http://localhost:3000/predict', {
+        const response = await axios.post(process.env.VITE_API_URL+'/predict', {
             features
         });
         return response.data;
